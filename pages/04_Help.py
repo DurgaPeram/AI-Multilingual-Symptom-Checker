@@ -21,7 +21,7 @@ st.markdown("""
 <div class='card'>
 1. Enter up to 4 symptoms in the form. <br> 
 2. Select your preferred language.  <br>
-3. Click **Analyze Symptoms**.  <br>
+3. Click <b>Analyze Symptoms</b>.  <br>
 4. Scroll down to see diagnosis and description.
 </div>
 """, unsafe_allow_html=True)

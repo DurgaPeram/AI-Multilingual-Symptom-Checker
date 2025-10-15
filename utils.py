@@ -1,8 +1,8 @@
 import pandas as pd
 import spacy
+import en_core_web_sm
 from spellchecker import SpellChecker
 from pathlib import Path
-from spacy.cli import download
 
 # -----------------------------
 # Path Setup
@@ -11,21 +11,17 @@ BASE_DIR = Path(__file__).parent
 SYMPTOMS_CSV = BASE_DIR / "diseases_and_symptoms.csv"
 DESCRIPTIONS_CSV = BASE_DIR / "disease_descriptions.csv"
 
-# Fallback if files are in /data/
+# Fallback if files are inside a 'data' folder
 if not SYMPTOMS_CSV.exists():
     SYMPTOMS_CSV = BASE_DIR / "data" / "diseases_and_symptoms.csv"
 if not DESCRIPTIONS_CSV.exists():
     DESCRIPTIONS_CSV = BASE_DIR / "data" / "disease_descriptions.csv"
 
 # -----------------------------
-# Load spaCy Model + SpellChecker (safe for Streamlit Cloud)
+# Load NLP and Spell Checker
 # -----------------------------
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
-
+# Using en_core_web_sm from requirements (no runtime download)
+nlp = en_core_web_sm.load()
 spell = SpellChecker()
 
 # -----------------------------

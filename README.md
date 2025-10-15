@@ -100,3 +100,37 @@ This project is provided under the MIT License. See the `LICENSE` file (if prese
 ## Contact
 
 If you need help or want me to push this repo to GitHub for you, tell me which authentication method you'd like (HTTPS with a Personal Access Token, or SSH) and I will provide the exact PowerShell commands.
+
+## AI-based diagnosis (optional)
+
+This project includes an optional AI-based diagnosis flow using OpenAI. To enable it:
+
+1. Install the OpenAI package (already added to `requirements.txt`):
+
+```powershell
+pip install -r requirements.txt
+```
+
+2. Set your OpenAI API key either as an environment variable or in Streamlit secrets:
+
+- Environment variable (PowerShell):
+
+```powershell
+$env:OPENAI_API_KEY = "sk-..."
+```
+
+- Streamlit secrets: create a file `.streamlit/secrets.toml` with:
+
+```toml
+OPENAI_API_KEY = "sk-..."
+```
+
+3. Run the AI-enabled app file `Home_AI.py` instead of `Home.py`:
+
+```powershell
+streamlit run Home_AI.py
+```
+
+Notes:
+- The AI flow calls OpenAI's ChatCompletion API and returns a JSON-like response parsed into fields. Keep your API key secret and monitor usage to avoid unexpected charges.
+- The AI diagnosis is provided for informational purposes only and is not a substitute for professional medical advice.

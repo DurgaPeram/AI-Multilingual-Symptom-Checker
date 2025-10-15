@@ -1,0 +1,56 @@
+import google.generativeai as genai
+import os
+import json
+
+# ✅ Load API key from environment
+GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+
+if GEMINI_KEY:
+    genai.configure(api_key=GEMINI_KEY)
+else:
+    print("⚠️ GEMINI_API_KEY not found. Please set it using:")
+    print('   setx GEMINI_API_KEY "your_key_here"')
+
+# ✅ Function to call Gemini for disease prediction
+def ai_diagnose(symptoms):
+    """
+    Takes a list of symptoms and predicts a likely disease,
+    its description, causes, precautions, and when to seek help.
+    """
+
+    if not GEMINI_KEY:
+        return {"error": "Gemini API key not found."}
+
+    model = genai.GenerativeModel("models/gemini-2.5-flash")
+
+
+    symptom_text = ", ".join(symptoms)
+    prompt = f"""
+    You are an experienced medical assistant.
+    A patient reports these symptoms: {symptom_text}.
+    Based on these, suggest the most likely disease.
+    Return the result in strict JSON format like this:
+
+    {{
+        "disease": "Disease name",
+        "description_en": "Brief and clear description in English.",
+        "causes": "Possible causes of the disease.",
+        "precautions": "Precautions or self-care tips.",
+        "when_to_seek_help": "When to see a doctor.",
+        "confidence": 0.8
+    }}
+    """
+
+    try:
+        response = model.generate_content(prompt)
+        text = response.text.strip()
+
+        # Try to parse valid JSON response
+        start = text.find("{")
+        end = text.rfind("}") + 1
+        json_str = text[start:end]
+        data = json.loads(json_str)
+
+        return data
+    except Exception as e:
+        return {"error": f"AI diagnosis failed: {e}"}
