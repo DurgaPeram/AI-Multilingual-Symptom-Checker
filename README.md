@@ -100,9 +100,6 @@ If you'd like to contribute:
 
 This project is provided under the MIT License. See the `LICENSE` file (if present) or add one to fit your needs.
 
-## Contact
-
-If you need help or want me to push this repo to GitHub for you, tell me which authentication method you'd like (HTTPS with a Personal Access Token, or SSH) and I will provide the exact PowerShell commands.
 
 ## AI-based diagnosis (optional)
 
@@ -135,5 +132,5 @@ streamlit run Home_AI.py
 ```
 
 Notes:
-- The AI flow calls OpenAI's ChatCompletion API and returns a JSON-like response parsed into fields. Keep your API key secret and monitor usage to avoid unexpected charges.
+- The AI flow calls Google Gemini's ChatCompletion API and returns a JSON-like response parsed into fields. Keep your API key secret and monitor usage to avoid unexpected charges.
 - The AI diagnosis is provided for informational purposes only and is not a substitute for professional medical advice.
