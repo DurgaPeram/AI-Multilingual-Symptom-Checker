@@ -2,6 +2,9 @@
 
 A Streamlit-based web app that provides preliminary health guidance by matching user-entered symptoms to likely diseases and showing multilingual descriptions. Designed for quick local testing and demonstration.
 
+# Access this site through
+https://ai-multilingual-symptom-checker-jsxjtfj4ayeehyftvuv54d.streamlit.app/
+
 ## Features
 
 - Enter up to 4 symptoms and get a probable diagnosis.
