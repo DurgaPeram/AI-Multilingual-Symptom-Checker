@@ -10,7 +10,7 @@ col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.image(str(STATIC / "images/icon.png"), width=130)
 with col2:
-    st.markdown("<h1 style='color:#1565c0;text-align:center;'> Welcome to Multiligual Symptom Checker</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color:#1565c0;text-align:center;'> Welcome to Multilingual Symptom Checker</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align:center;color:#333;'>Analyze your symptoms using AI and get health insights in your preferred language.</p>", unsafe_allow_html=True)
 with col3:
     st.image(str(STATIC / "images/medical.jpg"), width=130)
