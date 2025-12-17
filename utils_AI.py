@@ -35,7 +35,7 @@ def ai_diagnose(symptoms, lang="en"):
     if not GEMINI_KEY:
         return {"error": "Gemini API key not found."}
 
-    model = genai.GenerativeModel("models/gemini-2.5-flash")
+    model = genai.GenerativeModel("models/gemini-2.5-flash-lite")
     symptom_text = ", ".join(symptoms)
 
     base_prompt = f"""
